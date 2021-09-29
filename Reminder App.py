@@ -1,14 +1,34 @@
 from tkinter import *
+
 from tkinter import messagebox
+
 from ttkthemes import themed_tk as tk
+
 from tkinter import ttk
+
+import time
+
+icon = 'icon.ico'
+resulution = '270x270'
+
+print('Prisni nje moment.')
+print('User name: \"user\"')
+print('Password: \"user\"')
+print('Nese deshironi ta ndryshoni hyni ne file-in e codit')
+time.sleep(2)
+
+#NESE DESHIRONI TE NDRYSHONI USERNAME DHE PASSWORD:
+usrname = 'user'
+passtext = 'user'
+
 root = tk.ThemedTk()
 root.get_themes()
 root.set_theme('breeze')
 root.title('Remind me v1.1')
 root.resizable(False, False)
-root.iconbitmap('C:\\Users\\Admin\\Downloads\\op.ico')
-root.geometry('270x270')
+root.iconbitmap(icon)
+root.geometry(resulution)
+
 f1 = Frame(root)
 f2 = Frame(root)
 f3 = Frame(root)
@@ -17,8 +37,6 @@ def raise_frame(frame):
     frame.tkraise()
 
 
-usrname = 'user'
-passtext = 'user'
 for frame in (f1, f2, f3):
     frame.grid(row=0, column=0, sticky='news')
 else:
@@ -37,14 +55,14 @@ else:
 
 
     def delete():
-        file = open('name.txt', 'w')
+        file = open('file.txt', 'w')
         file.write('')
         a.delete('0', END)
 
 
     def save():
         remind = reminder.get('1.0', 'end-1c')
-        file = open('name.txt', 'a')
+        file = open('file.txt', 'a')
         file.write(remind + '\n')
 
 
@@ -53,7 +71,7 @@ else:
         raise_frame(f3)
         a = Listbox(f3, height=10, width=40, font=('calibri', 11))
         a.pack()
-        with open('name.txt', 'r') as file:
+        with open('file.txt', 'r') as file:
             for f in file:
                 a.insert(END, f.strip())
 
